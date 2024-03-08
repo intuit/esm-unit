@@ -1,0 +1,13 @@
+#! /bin/bash -e
+
+mkdir -p dist
+./node_modules/.bin/google-closure-compiler \
+    --dependency_mode=PRUNE \
+    --module_resolution=BROWSER \
+    --assume_function_wrapper \
+    --compilation_level=BUNDLE \
+    --output_wrapper="(function(){%output%}).call(this);" \
+    --js=src/**.js \
+    --js=*.js \
+    --entry_point=browserRunner.js \
+    --js_output_file=dist/browser-runner.js

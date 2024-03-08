@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="data:;base64,iVBORwOKGO=" />
+    <style>
+      .results-unfinished header button {
+        display: none;
+      }
+      .results-finished header progress {
+        display: none;
+      }
+
+      li.success {
+        color: green;
+      }
+      li.failure {
+        color: red;
+        font-weight: bold;
+      }
+      li.failure pre {
+        padding: 0;
+        margin: 0.5em 0;
+        font-weight: normal;
+      }
+      li.failure pre a {
+        color: darkred;
+      }
+      li.failure div {
+        font-weight: normal;
+        margin-top: 0.5em;
+      }
+
+      input.expand {
+        display: none;
+      }
+      input.expand + label::before {
+        display: none;
+      }
+      .results-finished input.expand + label::before {
+        display: inline-block;
+        content: "▶︎";
+        font-size: 10px;
+        margin-right: 0.5em;
+        color: #666;
+        transition: transform 0.1s linear;
+      }
+      input.expand:checked + label::before {
+        transform: rotate(90deg);
+      }
+      input.expand ~ ul {
+        display: none;
+      }
+      input.expand:checked ~ ul {
+        display: block;
+      }
+
+      a.run-test {
+        display: inline-block;
+        margin: 4px 1em;
+        text-decoration: none;
+        color: inherit;
+        font-size: 60%;
+        text-transform: uppercase;
+        border: 1px solid;
+        border-radius: 3px;
+        padding: 2px 4px;
+        font-family: sans-serif;
+        opacity: 0.5;
+      }
+      .failure a.run-test {
+        opacity: 0.75;
+      }
+      a.run-test:hover {
+        opacity: 1;
+      }
+
+    </style>
+    <script src="dist/browser-runner.js"></script>
+  </head>
+  <body>
+    <h1>ESM Unit Browser Runner</h1>
+    <div id="test_results"></div>
+  </body>
+</html>

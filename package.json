@@ -1,0 +1,41 @@
+{
+  "name": "esm-unit",
+  "version": "1.0.0-beta.1",
+  "author": "Richard Connamacher",
+  "description": "Unit testing native ES Modules in web browsers",
+  "main": "index.js",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intuit/esm-unit.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "argparse": "2.0.1",
+    "express": "^4.18.2",
+    "glob": "10.3.3",
+    "istanbul-lib-coverage": "3.2.2",
+    "istanbul-lib-instrument": "6.0.2",
+    "istanbul-lib-report": "3.0.1",
+    "istanbul-reports": "3.1.7",
+    "selenium-webdriver": "4.18.1"
+  },
+  "devDependencies": {
+    "google-closure-compiler": "20231112.0.0"
+  },
+  "bin": {
+    "esm-unit": "bin/esm-unit.js"
+  },
+  "scripts": {
+    "build": "scripts/build",
+    "prepare": "scripts/build",
+    "test": "node --experimental-test-coverage ./tests/unit/index.js"
+  }
+}
