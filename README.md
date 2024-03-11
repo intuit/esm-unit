@@ -114,7 +114,9 @@ Save a config file in `esm-unit.json` in the root of your project:
 ```json
 {
     "importMap": {
-      "esm-unit/": "/node_modules/esm-unit/"
+      "imports": {
+        "esm-unit/": "/node_modules/esm-unit/"
+      }
     },
     "testFiles": [
         "src/**/*.test.js"
@@ -128,7 +130,9 @@ Or in `esm-unit.js` to generate it with code:
 const { getLocale } = require("./utils.js");
 module.exports = {
     "importMap": {
-      "esm-unit/": "/node_modules/esm-unit/",
+      "imports": {
+        "esm-unit/": "/node_modules/esm-unit/",
+      },
     },
     "testFiles": [
         "src/**/*.test.js",
@@ -241,12 +245,14 @@ against those mocks.
 
  > npm install --save-dev sinon
 
-As it's a native ECMAScript module, you can add it to your import map in `esm-unit` for easier imports:
+As it's a native ECMAScript module, you can add it to your import map in `esm-unit.json` for easier imports:
 
 ```json
     "importMap": {
-      "esm-unit/": "/node_modules/esm-unit/",
-      "sinon": "/node_modules/sinon/pkg/sinon-esm.js"
+      "imports": {
+        "esm-unit/": "/node_modules/esm-unit/",
+        "sinon": "/node_modules/sinon/pkg/sinon-esm.js"
+      }
     },
     "testFiles": [
         "src/**/*.test.js"
