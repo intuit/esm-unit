@@ -1,6 +1,6 @@
 {
   "name": "esm-unit",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "author": "Richard Connamacher",
   "description": "Unit testing native ES Modules in web browsers",
   "main": "index.js",
