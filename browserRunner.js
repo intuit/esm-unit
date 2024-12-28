@@ -206,6 +206,7 @@ window.addEventListener("load", () => {
     module,
     debug = false,
     config: configSrc,
+    origin,
   } = searchParams;
 
   let testFiles = [];
@@ -253,7 +254,7 @@ window.addEventListener("load", () => {
         testFiles = testFiles.filter(testFile => testFile === fileInPath);
       }
 
-      testSandboxes = testFiles.map(testFile => new TestSandbox(testFile, module, config, debug));
+      testSandboxes = testFiles.map(testFile => new TestSandbox(testFile, module, config, debug, origin));
       testSandboxes.forEach(sandbox => sandbox.register());
 
       console.debug(`Registered tests at ${timediff()}`);

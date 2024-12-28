@@ -1,9 +1,10 @@
 import { loadScript, setImportMap, validateLocalFilePath } from "./util/loader.js";
 import { createRootTestSuite } from "./TestSuite.js";
 
-function injectIframe() {
+function injectIframe(origin) {
   return new Promise(resolve => {
     const iframe = document.createElement('iframe');
+    iframe.src = `${origin}/iframe-entrypoint.html`;
     iframe.addEventListener("load", () => resolve(iframe));
 
     // Hide, but don't set display to 'none' since that would break tests that check offsetWidth in Chrome
@@ -23,11 +24,12 @@ function getQueryParams(filePath) {
 }
 
 export default class TestSandbox {
-  constructor(filePath, isModule, config, debug) {
+  constructor(filePath, isModule, config, debug, origin) {
     this.filePath = filePath;
     this.isModule = isModule;
     this.config = config;
     this.debug = debug;
+    this.origin = origin;
     this.iframe = null;
     this.testSuite = null;
     this.error = null;
@@ -77,7 +79,7 @@ export default class TestSandbox {
     // Append filePath's query params to included modules as well
     const queryPatamSuffix = getQueryParams(filePath);
 
-    return this.loadPromise = injectIframe()
+    return this.loadPromise = injectIframe(this.origin)
       .then(_iframe => {
         this.iframe = iframe = _iframe;
         ({ contentWindow, contentDocument } = iframe);

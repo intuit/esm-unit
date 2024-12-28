@@ -209,8 +209,9 @@ export default class TestRunner {
         urlParams.push("module")
       }
     }
-
-    return `${this.httpServerUrl}${getEsmUnitRelativePath()}/runner.html?${urlParams.join("&")}`;
+    const origin = `${this.httpServerUrl}${getEsmUnitRelativePath()}`;
+    urlParams.push(`origin=${encodeURIComponent(origin)}`);
+    return `${origin}/runner.html?${urlParams.join("&")}`;
   }
 
   async runTests() {

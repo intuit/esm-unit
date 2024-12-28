@@ -36,6 +36,6 @@
   "scripts": {
     "build": "scripts/build",
     "prepare": "scripts/build",
-    "test": "node --experimental-test-coverage ./tests/unit/index.js"
+    "test": "node --experimental-test-coverage ./tests/index.js"
   }
 }
